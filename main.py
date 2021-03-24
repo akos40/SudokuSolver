@@ -1,6 +1,7 @@
 import numpy as np
 import csv
 import time
+import sqlite3
 
 
 def solve_heuristics(bo):
@@ -115,9 +116,9 @@ def print_board(bo):
                 print(str(bo[i][j]) + " ", end='')
 
 
-with open('expert.csv', newline="") as f:
-    reader = csv.reader(f)
-    data = [str(row) for row in reader]
+con = sqlite3.connect('puzzles.db')
+cur = con.cursor()
+data = [str(row) for row in cur.execute('SELECT * FROM simple')]
 
 
 def reformat_csv(puzzle):

@@ -5,7 +5,7 @@ import numpy as np
 def read_from_db():
     con = sqlite3.connect('puzzles.db')
     cur = con.cursor()
-    data = [str(row) for row in cur.execute('SELECT * FROM simple')]
+    data = [str(row) for row in cur.execute('SELECT * FROM expert')]
     return data
 
 

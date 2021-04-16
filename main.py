@@ -13,7 +13,7 @@ def main():
         printboard.print_board(board)
         solver.count = 0
         start = time.time()
-        solver.solver(board, 0)
+        solver.solver(board, 1)
         end = time.time()
         print("Nodes explored: ", solver.count, " Finished in :", end - start, " second.")
         print("___________________")

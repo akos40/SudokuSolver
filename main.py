@@ -2,6 +2,7 @@ import time
 import solver
 import printboard
 import readdb
+import forwardChecking
 
 
 def main():
@@ -11,14 +12,14 @@ def main():
     for x in range(100):
         board = readdb.reformat_csv(readdb.read_from_db()[x])
         printboard.print_board(board)
-        solver.count = 0
+        forwardChecking.count = 0
         start = time.time()
-        solver.solver(board, 1)
+        forwardChecking.solver(board)
         end = time.time()
-        print("Nodes explored: ", solver.count, " Finished in :", end - start, " second.")
+        print("Nodes explored: ", forwardChecking.count, " Finished in :", end - start, " second.")
         print("___________________")
         printboard.print_board(board)
-        sum_nodes += solver.count
+        sum_nodes += forwardChecking.count
         sum_time += end - start
 
     avg_nodes = sum_nodes / 100
